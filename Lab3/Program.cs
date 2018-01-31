@@ -9,7 +9,8 @@ namespace Lab3
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
+            //program from class
             Console.WriteLine("Basic Angle Manipulation");
             Angle a1 = new Angle(60, Angle.AngleUnits.Degrees);
             Console.WriteLine($"a1: {a1}");

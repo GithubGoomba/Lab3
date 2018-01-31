@@ -122,7 +122,7 @@ namespace Lab3
                             int digs = Int32.Parse(fmt);
                             digs = digs.Constrain(0, 9);
                             test = test.ConvertAngle(Angle.AngleUnits.Radians);
-                            test.Value = test.Value / Angle.pi;
+                            test.Value = test.Value / Angle.pi; //conversion to pirads
                             result = test.Value.ToString(fmt) + "πrad";
                         }
                         break;

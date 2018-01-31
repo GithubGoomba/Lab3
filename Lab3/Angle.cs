@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    public class Angle : IFormattable
+    public class Angle : IFormattable //includes IFormattable so that the class can use custom formatting 
     {
-        #region fields and props
-        public enum AngleUnits { Degrees, Gradians, Radians, Turns };
+        #region fields and properties
+        public enum AngleUnits { Degrees, Gradians, Radians, Turns }; //put enum in here since there was only 1.
         
         public const decimal pi = 3.1415926535897932384626434M;
         public const decimal twoPi = 2M * pi;
@@ -51,7 +51,7 @@ namespace Lab3
         #endregion
 
         #region methods
-        public static decimal Normalize(decimal value, AngleUnits units)
+        public static decimal Normalize(decimal value, AngleUnits units)  //reverts angles to between 0 and 360 degrees in their respective units.
         {
             if (units == AngleUnits.Degrees)
             {
@@ -123,7 +123,7 @@ namespace Lab3
             }
             return value;
         }
-        public static decimal ConvertAngleValue(decimal angle, AngleUnits fromUnits, AngleUnits toUnits)
+        public static decimal ConvertAngleValue(decimal angle, AngleUnits fromUnits, AngleUnits toUnits) 
         {
             decimal result = 0M;
             decimal factor = _ConversionFactors[(int)toUnits, (int)fromUnits];
@@ -197,8 +197,8 @@ namespace Lab3
             Angle test = a2.ConvertAngle(a1.Units);
             
             decimal calc = 0;
-            calc = ConvertAngleValue(a2.Value, a2.Units, a1.Units);
-            return new Lab3.Angle(a1.Value + calc, a1.Units);
+            calc = ConvertAngleValue(a2.Value, a2.Units, a1.Units); //need to conver the angles to the same units before they can be added
+            return new Angle(a1.Value + calc, a1.Units); //using the convention that angle 1 is the correct units for the calc.
             
         }
         public static Angle operator -(Angle a1, Angle a2)
@@ -305,7 +305,7 @@ namespace Lab3
 
         public Angle() : this(0, AngleUnits.Degrees) { } 
 
-        public Angle(Angle other) : this(other.Value, other.Units) { }
+        public Angle(Angle other) : this(other.Value, other.Units) { } 
 
         public Angle(decimal value, AngleUnits units = AngleUnits.Degrees)
         {
