@@ -8,6 +8,7 @@ namespace Lab3
 {
     public class Angle : IFormattable
     {
+        #region fields and props
         public enum AngleUnits { Degrees, Gradians, Radians, Turns };
         
         public const decimal pi = 3.1415926535897932384626434M;
@@ -47,48 +48,50 @@ namespace Lab3
                 _Units = value;
             }
         }
+        #endregion
 
+        #region methods
         public static decimal Normalize(decimal value, AngleUnits units)
         {
             if (units == AngleUnits.Degrees)
             {
-                if (value < 0)
+                if (value < 0M)
                 {
-                    while (value < 0)
+                    while (value < 0M)
                     {
-                        value = value + 360;
+                        value = value + 360M;
                     }
                 }
-                if (value > 360)
+                if (value > 360M)
                 {
-                    while (value > 360)
+                    while (value > 360M)
                     {
-                        value = value - 360;
+                        value = value - 360M;
                     }
                 }
             }
             if (units == AngleUnits.Gradians)
             {
-                if (value < 0)
+                if (value < 0M)
                 {
-                    while (value < 0)
+                    while (value < 0M)
                     {
-                        value = value + 400;
+                        value = value + 400M;
                     }
                 }
-                if (value > 400)
+                if (value > 400M)
                 {
-                    while (value > 400)
+                    while (value > 400M)
                     {
-                        value = value - 400;
+                        value = value - 400M;
                     }
                 }
             }
             if (units == AngleUnits.Radians)
             {
-                if (value < 0)
+                if (value < 0M)
                 {
-                    while (value < 0)
+                    while (value < 0M)
                     {
                         value = value + twoPi;
                     }
@@ -103,18 +106,18 @@ namespace Lab3
             }
             if (units == AngleUnits.Turns)
             {
-                if (value < 0)
+                if (value < 0M)
                 {
-                    while (value < 0)
+                    while (value < 0M)
                     {
-                        value = value + 1;
+                        value = value + 1M;
                     }
                 }
-                if (value > 1)
+                if (value > 1M)
                 {
-                    while (value > 1)
+                    while (value > 1M)
                     {
-                        value = value - 1;
+                        value = value - 1M;
                     }
                 }
             }
@@ -186,18 +189,17 @@ namespace Lab3
         {
             return ToString(string.Empty);
         }
+        #endregion
+
         #region operators
         public static Angle operator +(Angle a1, Angle a2)
         {
             Angle test = a2.ConvertAngle(a1.Units);
             
-            //decimal calc = 0;
-            //calc = test.Value + a1.Value;
             decimal calc = 0;
             calc = ConvertAngleValue(a2.Value, a2.Units, a1.Units);
             return new Lab3.Angle(a1.Value + calc, a1.Units);
-            //Angle result = new Angle(calc,a1.Units);
-            //return result; 
+            
         }
         public static Angle operator -(Angle a1, Angle a2)
         {
@@ -298,7 +300,6 @@ namespace Lab3
             return (double)a.Value;
         }
         #endregion
-
 
         #region constructors
 
