@@ -21,8 +21,7 @@ namespace Lab3
         {
             Angle test = new Angle();
             string result = string.Empty;
-            Console.WriteLine(format);
-           
+                       
             if (arg == null)
             {
                 throw new ArgumentNullException("arg");
@@ -31,7 +30,7 @@ namespace Lab3
             {
 
             }
-            if ((string.IsNullOrEmpty(format)))// || (format == "c") || (format =="C") ) 
+            if ((string.IsNullOrEmpty(format)) || (format == "c") || (format =="C") ) 
             {
                 format = "c";
             }
